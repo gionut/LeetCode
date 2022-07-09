@@ -1,11 +1,9 @@
 class Solution:
     def maxResult(self, nums: List[int], k: int) -> int:
-        last_index = len(nums) - 1
-        
         next_k_monoqueue = deque()
-        next_k_monoqueue.appendleft(last_index)
+        next_k_monoqueue.appendleft(len(nums) - 1)
         
-        for i in range(last_index - 1, -1, -1):
+        for i in range(len(nums) - 2, -1, -1):
             max_reachable_score = nums[next_k_monoqueue[0]]
             
             current_score = nums[i] + max_reachable_score

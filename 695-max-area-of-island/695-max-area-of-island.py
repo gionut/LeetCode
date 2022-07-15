@@ -8,10 +8,7 @@ class Solution:
         for row, rowCells in enumerate(grid):
             for col, cell in enumerate(rowCells):
                 if cell == 1:
-                    area = self.bfs(row, col)
-                    
-                    if area > maxArea:
-                        maxArea = area
+                    maxArea = max(maxArea, self.bfs(row, col))
         
         return maxArea
                     

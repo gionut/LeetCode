@@ -15,8 +15,9 @@ class Solution:
                 min_cost += weight 
                 visited.add(dest)
                 src = dest
-                for dest in range(len(points)):
-                    if dest != src and dest not in visited:
+                
+                neighbours = getNeighbours(src)
+                for dest in neighbours:
                         edge = (src, dest)
                         weight = (computeWeight(points[src], points[dest]), edge)
                         heappush(min_weight, weight)

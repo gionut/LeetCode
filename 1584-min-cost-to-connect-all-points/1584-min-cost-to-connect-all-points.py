@@ -9,7 +9,7 @@ class Solution:
         
         min_cost = 0        
 
-        while len(heap):
+        while len(visited) < n:
             cost, (src, dest) = heappop(heap)            
             
             if dest in visited: continue

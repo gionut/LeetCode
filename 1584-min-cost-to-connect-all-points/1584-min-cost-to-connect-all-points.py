@@ -1,6 +1,7 @@
 class Solution:
     def minCostConnectPoints(self, p: List[List[int]]) -> int:
-        computeWeight = lambda p1, p2: abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
+        def manhattan(x, y):
+            return abs(x[0]-y[0]) + abs(x[1]-y[1])
         
         ans, n = 0, len(p)
         seen = set()
@@ -14,7 +15,7 @@ class Solution:
             seen.add(v)
             for j in range(n):
                 if j not in seen and j!=v:
-                    heapq.heappush(vertices, (computeWeight(p[j], p[v]), (v, j)))
+                    heapq.heappush(vertices, (manhattan(p[j], p[v]), (v, j)))
         
         return ans
 #         computeWeight = lambda p1, p2: abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])

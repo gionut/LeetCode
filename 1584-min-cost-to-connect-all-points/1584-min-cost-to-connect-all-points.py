@@ -5,17 +5,16 @@ class Solution:
         
         ans, n = 0, len(p)
         seen = set()
-        vertices = [(0, (0, 0))]
+        min_cost = [(0, (0, 0))]
 
-        while len(seen) < n:
-            # print(vertices, seen)
-            w, (u, v) = heappop(vertices)            
+        while len(min_cost):
+            w, (u, v) = heappop(min_cost)            
             if v in seen: continue
             ans += w
             seen.add(v)
             for j in range(n):
                 if j not in seen and j!=v:
-                    heappush(vertices, (manhattan(p[j], p[v]), (v, j)))
+                    heappush(min_cost, (manhattan(p[j], p[v]), (v, j)))
         
         return ans
 #         computeWeight = lambda p1, p2: abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])

@@ -12,13 +12,14 @@ class Solution:
         while len(heap):
             cost, (src, dest) = heappop(heap)            
             
-            if dest not in visited:
-                visited.add(dest)
-                min_cost += cost
+            if dest in visited: continue
                 
-                for neighbour in range(n):
-                    if neighbour not in visited and neighbour != dest:
-                        heappush(heap, (manhattan(points[dest], points[neighbour]), (dest, neighbour)))
+            visited.add(dest)
+            min_cost += cost
+
+            for neighbour in range(n):
+                if neighbour not in visited and neighbour != dest:
+                    heappush(heap, (manhattan(points[dest], points[neighbour]), (dest, neighbour)))
         
         return min_cost
 #         computeWeight = lambda p1, p2: abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])

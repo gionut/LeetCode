@@ -1,25 +1,23 @@
 class Solution:
-    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+    def minCostConnectPoints(self, p: List[List[int]]) -> int:
         def manhattan(x, y):
             return abs(x[0]-y[0]) + abs(x[1]-y[1])
         
-        visited = set()
-        heap = [(0, (0, 0))]
-        
-        min_cost = 0        
+        ans, n = 0, len(p)
+        seen = set()
+        vertices = [(0, (0, 0))]
 
-        while len(heap):
-            cost, (src, dest) = heappop(heap)            
-            
-            if dest not in visited:
-                visited.add(dest)
-                min_cost += cost
-                
-                for neighbour in range(len(points)):
-                    if neighbour not in visited and neighbour != dest:
-                        heappush(heap, (manhattan(points[dest], points[neighbour]), (dest, neighbour)))
+        while len(seen) < n:
+            # print(vertices, seen)
+            w, (u, v) = heapq.heappop(vertices)            
+            if v in seen: continue
+            ans += w
+            seen.add(v)
+            for j in range(n):
+                if j not in seen and j!=v:
+                    heapq.heappush(vertices, (manhattan(p[j], p[v]), (v, j)))
         
-        return min_cost
+        return ans
 #         computeWeight = lambda p1, p2: abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 #         getNeighbours = lambda p1: [p for p in range(len(points)) if p != p1 and p not in visited]
         

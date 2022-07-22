@@ -6,16 +6,6 @@
  * };
  */
 
-void printList(struct ListNode* head) {
-    struct ListNode* crt = head; 
-    while(crt != NULL) {
-        printf("%d ", crt->val);
-        crt = crt->next;
-    }
-    printf("\n");
-}
-
-
 struct ListNode* getPriorPivot(struct ListNode* head, int x){
     struct ListNode* priorPivot = NULL;
     
@@ -66,16 +56,11 @@ struct ListNode* partition(struct ListNode* head, int x){
            struct ListNode* removed = removeNextAndReturn(crt);
            insertAfter(priorPivot, removed);
            priorPivot = removed;
-           
-           // printList(&helperNode);
-           
+                      
         }
         else
             crt = crt->next;    
     }
-    
-    if(priorPivot == NULL)
-        return head;
     
     
     return helperNode.next;

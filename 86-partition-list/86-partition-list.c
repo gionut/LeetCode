@@ -55,8 +55,7 @@ struct ListNode* partition(struct ListNode* head, int x){
        if(hasNext(crt) == 1 && crt->next->val < x) {
            struct ListNode* removed = removeNextAndReturn(crt);
            insertAfter(priorPivot, removed);
-           priorPivot = removed;
-                      
+           priorPivot = removed;       
         }
         else
             crt = crt->next;    

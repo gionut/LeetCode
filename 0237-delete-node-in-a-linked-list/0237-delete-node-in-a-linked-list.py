@@ -4,6 +4,7 @@ class Solution:
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
-        node.val = node.next.val
-        node.next = node.next.next
+        see_ahead = node.next
+        node.val = see_ahead.val
+        node.next = see_ahead.next
         

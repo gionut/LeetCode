@@ -18,7 +18,7 @@ class Solution:
             freq[char] += 1
         
         sorted_keys = sorted(freq.keys(), key=lambda x: freq[x], reverse=True)
-        result = ''
+        result = []
         for key in sorted_keys:
-            result += key * freq[key]
-        return result
+            result.append(key * freq[key])
+        return ''.join(result)

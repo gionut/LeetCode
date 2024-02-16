@@ -16,19 +16,18 @@ class Solution:
         
         result = []
         for interval in intervals:
-            print(interval)
             if isOutside(interval, toBeRemoved):
                 result.append(interval)
-                print(interval, "isOutside")
+
             elif isInside(interval, toBeRemoved):
                 result.append([interval[0], toBeRemoved[1]-1])
                 result.append([toBeRemoved[1], interval[1]])
-                print("isInside", interval)
+
             elif isBoundedRight(interval, toBeRemoved):
                 result.append([interval[0], toBeRemoved[0]])
-                print(interval, "isBoundedRight")
+
             elif isBoundedLeft(interval, toBeRemoved):
                 result.append([toBeRemoved[1], interval[1]])
-                print(interval, "isBoundedLeft")
+
         
         return result

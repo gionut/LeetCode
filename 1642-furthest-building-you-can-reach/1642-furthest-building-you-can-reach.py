@@ -1,8 +1,3 @@
-[4,12,2,7,3,18,20,3,19]
-10
-2
-
-
 class Solution:
     def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
         climbs = []

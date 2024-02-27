@@ -1,11 +1,3 @@
-# output = []
-# toEnter = []
-# toExit = []
-# at each time:
-#     who wants to enter: crt time + toEnter
-#     who wants to exit: crt time + toExit
-#     what was the previous move
-#     who has priority
 class Solution:
     def timeTaken(self, arrival: List[int], state: List[int]) -> List[int]:
         n = len(arrival)
@@ -13,8 +5,8 @@ class Solution:
         ENTER = 0
         
         output = [-1] * n
-        toEnter = []
-        toExit = []
+        toEnter = deque()
+        toExit = deque()
         previousMove = EXIT
         same_time = 0
         
@@ -22,25 +14,23 @@ class Solution:
         while i < n or toEnter or toExit:
             while i < n and arrival[i] == same_time:
                 if state[i] == ENTER:
-                    heapq.heappush(toEnter, i) 
+                    toEnter.append(i) 
                 else:
-                    heapq.heappush(toExit, i)
+                    toExit.append(i)
                 i += 1
-            
-            # print(toEnter, toExit)
             
             if previousMove == EXIT:
                 if toExit:
-                    output[heapq.heappop(toExit)] = same_time
+                    output[toExit.popleft()] = same_time
                 elif toEnter:
-                    output[heapq.heappop(toEnter)] = same_time
+                    output[toEnter.popleft()] = same_time
                     previousMove = ENTER
             
             else:
                 if toEnter:
-                    output[heapq.heappop(toEnter)] = same_time
+                    output[toEnter.popleft()] = same_time
                 elif toExit:
-                    output[heapq.heappop(toExit)] = same_time
+                    output[toExit.popleft()] = same_time
                     previousMove = EXIT
                 else:
                     previousMove = EXIT

@@ -11,7 +11,7 @@
 
 class Solution:
     def minimumOperations(self, nums: List[int]) -> int:
-        @lru_cache(maxsize=2**19)
+        @lru_cache(maxsize=2**16)
         def minOps(start, end, start_idx, end_idx):
             if end_idx - start_idx < 1:
                 return 0

@@ -1,8 +1,7 @@
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         intervals = sorted(intervals)
-        print(intervals)
-        pq = [(-1,-1)]
+        pq = [(0,0)]
         for (start, end) in intervals:
             (soonest_available, _) = pq[0]
             
